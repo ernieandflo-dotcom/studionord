@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Nord</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/sadabooth.MOV" type="video/mp4" />
+    Ton navigateur ne supporte pas la vidéo HTML5.
+  </video>
+
+  <header>
+    <img src="assets/logoSN_v0.1.png" alt="Logo Studio Nord" class="header-logo" />
+    <nav>
+      <div class="hamburger">☰</div>
+      <ul class="nav-links">
+        <li><a href="#booking">Réserver</a></li>
+        <li><a href="#tarifs">Tarifs</a></li>
+        <li><a href="#media">Studio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <img src="assets/logoSN_v0.2.png" alt="Logo principal" class="main-logo" />
+      </div>
+      <a href="#booking" class="cta-button">Réserver une séance</a>
+    </section>
+
+    <section id="booking">
+      <h2>Réserver</h2>
+      <p>Choisissez une plage horaire via notre outil de réservation ou contactez-nous directement.</p>
+    </section>
+
+    <section id="tarifs">
+      <h2>Tarifs</h2>
+      <table class="pricing-table">
+        <tr><th>Durée</th><th>Service</th><th>Prix</th></tr>
+        <tr><td>1h</td><td>Enregistrement</td><td>40$</td></tr>
+        <tr><td>2h</td><td>Mix + Rec</td><td>70$</td></tr>
+        <tr><td>4h</td><td>Pack Session Pro</td><td>130$</td></tr>
+      </table>
+    </section>
+
+    <section id="media">
+      <h2>À l'intérieur du studio</h2>
+      <div class="media-grid">
+        <img src="assets/studio1.jpg" alt="Studio photo 1" />
+        <img src="assets/studio2.jpg" alt="Studio photo 2" />
+        <iframe src="https://www.youtube.com/embed/26F8rEkFMqo?si=x_LGkjK5-gsE9I96" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Rejoignez la communauté</h2>
+      <div class="socials">
+        <a href="https://instagram.com" target="_blank">
+          <img src="assets/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://youtube.com" target="_blank">
+          <img src="assets/youtube.png" alt="YouTube" />
+        </a>
+        <a href="https://discord.com" target="_blank">
+          <img src="assets/discord.png" alt="Discord" />
+        </a>
+        <a href="mailto:contact@studionord.ca">
+          <img src="assets/email.png" alt="Email" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
