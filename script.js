@@ -1,42 +1,28 @@
-// MENU HAMBURGER
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+const overlay = document.getElementById('overlay');
 const navItems = document.querySelectorAll('.nav-links a');
 
+// Function to close the menu
+function closeMenu() {
+  hamburger.classList.remove('active');
+  navLinks.classList.remove('show');
+  overlay.style.display = 'none';
+}
+
+// Toggle menu on hamburger click
 hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('show');
   hamburger.classList.toggle('active');
-  navLinks.classList.toggle('show');
+  overlay.style.display = isOpen ? 'block' : 'none';
 });
 
+// Close menu on overlay click
+overlay.addEventListener('click', closeMenu);
+
+// Close menu when a nav link is clicked
 navItems.forEach(link => {
   link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('show');
+    closeMenu();
   });
 });
-
-// ANIMATION LOGO ROTATIF SUR L’AXE Y
-const logo = document.querySelector('.main-logo');
-
-// 4 rotations Y au chargement
-window.addEventListener('load', () => {
-  logo.style.animation = 'rotateYTwoTimes 5s ease-in-out';
-});
-
-// Réinitialise l'animation une fois terminée pour pouvoir relancer plus tard
-logo.addEventListener('animationend', () => {
-  logo.style.animation = '';
-});
-
-// 1 rotation Y à chaque réapparition dans le viewport
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && logo.classList.contains('has-loaded')) {
-      logo.style.animation = 'rotateYOnce 2s ease-in-out';
-    } else if (entry.isIntersecting) {
-      logo.classList.add('has-loaded');
-    }
-  });
-}, { threshold: 0.5 });
-
-observer.observe(logo);
