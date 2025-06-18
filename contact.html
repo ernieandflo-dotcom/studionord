@@ -66,20 +66,6 @@
     </section>
   </main>
 
-  <script>
-    const roleSelect = document.getElementById("contact-role");
-    const defaultForm = document.getElementById("default-form");
-    const creatorForm = document.getElementById("creator-form");
-
-    roleSelect.addEventListener("change", () => {
-      if (roleSelect.value === "creator") {
-        defaultForm.classList.add("hidden");
-        creatorForm.classList.remove("hidden");
-      } else {
-        defaultForm.classList.remove("hidden");
-        creatorForm.classList.add("hidden");
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
