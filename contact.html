@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Studio Nord</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="overlay"></div>
+  <header>
+    <div class="logo-wrapper">
+      <div class="logo-rotator" onclick="window.location.href='index.html';" style="cursor:pointer;">
+        <img src="assets/logoSN_v0.3.png" alt="Logo Studio Nord" class="logo-face front-face" />
+        <img src="assets/logoEtoile_v0.5.png" alt="Logo Étoile" class="logo-face back-face" />
+      </div>
+    </div>
+    <nav>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#booking">Tarifs</a></li>
+        <li><a href="booking.html">Réserver</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Contacte-nous</h1>
+      <p>Pour toute question, projet ou collaboration</p>
+    </section>
+
+    <section class="contact-section">
+      <label for="contact-role">Vous êtes :</label>
+      <select id="contact-role">
+        <option value="default">Autre</option>
+        <option value="creator">Artiste (voix)</option>
+        <option value="creator">Beatmaker / Instrumentaliste</option>
+        <option value="creator">Créateur-créatrice de contenu</option>
+      </select>
+
+      <form id="default-form" class="contact-form">
+        <input type="text" placeholder="Votre nom" required />
+        <input type="email" placeholder="Votre courriel" required />
+        <textarea placeholder="Votre message" rows="5" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <form id="creator-form" class="contact-form hidden">
+        <input type="text" placeholder="Nom ou alias artistique" required />
+        <input type="email" placeholder="Adresse courriel" required />
+        <input type="url" placeholder="Lien vers votre portfolio / Soundcloud / YouTube" required />
+        <select required>
+          <option value="">Type de collaboration souhaitée</option>
+          <option value="beat">Soumettre des beats</option>
+          <option value="collab">Proposer un projet</option>
+          <option value="autre">Autre</option>
+        </select>
+        <textarea placeholder="Parlez-nous de votre proposition" rows="5" required></textarea>
+        <button type="submit">Soumettre</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const roleSelect = document.getElementById("contact-role");
+    const defaultForm = document.getElementById("default-form");
+    const creatorForm = document.getElementById("creator-form");
+
+    roleSelect.addEventListener("change", () => {
+      if (roleSelect.value === "creator") {
+        defaultForm.classList.add("hidden");
+        creatorForm.classList.remove("hidden");
+      } else {
+        defaultForm.classList.remove("hidden");
+        creatorForm.classList.add("hidden");
+      }
+    });
+  </script>
+</body>
+</html>
