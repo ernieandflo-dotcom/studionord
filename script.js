@@ -52,11 +52,30 @@ document.addEventListener("DOMContentLoaded", () => {
       const descriptionRow = button.closest("tr").nextElementSibling;
 
       if (descriptionRow && descriptionRow.classList.contains("service-description")) {
-        // Toggle visibility
         const isVisible = descriptionRow.style.display === "table-row";
         descriptionRow.style.display = isVisible ? "none" : "table-row";
         button.classList.toggle("open", !isVisible);
       }
+    });
+  });
+
+  // --- Gestion FAQ accordéon avec animation glissante ---
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+  faqQuestions.forEach(question => {
+    question.addEventListener("click", () => {
+      const answer = question.nextElementSibling;
+      const isOpen = question.classList.contains("open");
+
+      if (isOpen) {
+        // Fermer
+        answer.style.maxHeight = null;
+      } else {
+        // Ouvrir
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+
+      question.classList.toggle("open", !isOpen);
     });
   });
 });
