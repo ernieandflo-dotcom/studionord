@@ -482,62 +482,88 @@ footer {
   line-height: 1.5;
 }
 
+.service-description.show {
+  display: table-row;
+}
+
 /* --- FAQ Section --- */
 .faq-section {
   max-width: 800px;
-  margin: 3rem auto;
-  padding: 0 1rem;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
   text-align: left;
 }
 
+/* Section title */
 .faq-section h2 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
   color: var(--primary);
+  font-weight: 700;
 }
 
+/* Each FAQ item block */
 .faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1rem;
 }
 
+/* The clickable question */
 .faq-question {
-  width: 100%;
   background: none;
   border: none;
+  width: 100%;
   text-align: left;
   font-size: 1.1rem;
-  padding: 0.75rem 0;
+  font-weight: 600;
+  padding: 1rem 0;
   cursor: pointer;
-  font-weight: bold;
+  position: relative;
   color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  transition: color 0.3s ease;
 }
 
+.faq-question:hover {
+  color: var(--primary);
+}
+
+/* + / – icon on the right */
 .faq-question::after {
-  content: '+';
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, content 0.3s ease;
 }
 
 .faq-question.open::after {
-  content: '-';
-  transform: rotate(180deg);
+  content: "–";
+  transform: translateY(-50%) rotate(180deg);
 }
 
+/* Hidden answer container */
 .faq-answer {
-  display: none;
-  padding: 0.5rem 0 1rem 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
   color: #ccc;
+  opacity: 0;
+}
+
+/* Visible answer state (when JS adds .open) */
+.faq-question.open + .faq-answer {
+  max-height: 500px; /* adjusted dynamically if needed */
+  opacity: 1;
+}
+
+/* Text inside the answer */
+.faq-answer p {
+  padding: 0.5rem 0;
   line-height: 1.5;
   font-size: 0.95rem;
-  transition: max-height 0.3s ease;
 }
 
-
-.service-description.show {
-  display: table-row;
-}
