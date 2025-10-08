@@ -1,3 +1,4 @@
+// --- Gestion du menu hamburger ---
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const overlay = document.getElementById('overlay');
@@ -25,6 +26,8 @@ navItems.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
+
+// --- Gestion du formulaire contact (si présent) ---
 document.addEventListener("DOMContentLoaded", () => {
   const roleSelect = document.getElementById("contact-role");
   const defaultForm = document.getElementById("default-form");
@@ -41,4 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // --- Gestion des descriptions de services (index.html uniquement) ---
+  const toggleButtons = document.querySelectorAll(".toggle-btn");
+
+  toggleButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const descriptionRow = button.closest("tr").nextElementSibling;
+
+      // Afficher/masquer la description
+      descriptionRow.classList.toggle("show");
+      button.classList.toggle("open");
+    });
+  });
 });
