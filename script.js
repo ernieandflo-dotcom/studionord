@@ -46,15 +46,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Gestion des descriptions de services (index.html uniquement) ---
-  const toggleButtons = document.querySelectorAll(".toggle-btn");
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".toggle-btn");
 
-  toggleButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const descriptionRow = button.closest("tr").nextElementSibling;
-
-      // Afficher/masquer la description
-      descriptionRow.classList.toggle("show");
-      button.classList.toggle("open");
+    toggleButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const descriptionRow = button.closest("tr").nextElementSibling;
+        descriptionRow.classList.toggle("show");
+        button.classList.toggle("open");
     });
   });
+});
+
 });
