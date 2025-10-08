@@ -5,16 +5,16 @@ const overlay = document.getElementById('overlay');
 const navItems = document.querySelectorAll('.nav-links a');
 
 function closeMenu() {
-  hamburger.classList.remove('active');
-  navLinks.classList.remove('show');
-  overlay.style.display = 'none';
+  if (hamburger) hamburger.classList.remove('active');
+  if (navLinks) navLinks.classList.remove('show');
+  if (overlay) overlay.style.display = 'none';
 }
 
 if (hamburger) {
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('show');
     hamburger.classList.toggle('active');
-    overlay.style.display = isOpen ? 'block' : 'none';
+    if (overlay) overlay.style.display = isOpen ? 'block' : 'none';
   });
 }
 
@@ -25,7 +25,6 @@ if (overlay) {
 navItems.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
-
 
 // --- Gestion du formulaire contact (si présent) ---
 document.addEventListener("DOMContentLoaded", () => {
@@ -45,17 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Gestion des descriptions de services (index.html uniquement) ---
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleButtons = document.querySelectorAll(".toggle-btn");
+  // --- Gestion des descriptions de services (index.html ou booking.html) ---
+  const toggleButtons = document.querySelectorAll(".toggle-btn");
 
-    toggleButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const descriptionRow = button.closest("tr").nextElementSibling;
-        descriptionRow.classList.toggle("show");
-        button.classList.toggle("open");
+  toggleButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const descriptionRow = button.closest("tr").nextElementSibling;
+
+      if (descriptionRow && descriptionRow.classList.contains("service-description")) {
+        // Toggle visibility
+        const isVisible = descriptionRow.style.display === "table-row";
+        descriptionRow.style.display = isVisible ? "none" : "table-row";
+        button.classList.toggle("open", !isVisible);
+      }
     });
   });
-});
-
 });
