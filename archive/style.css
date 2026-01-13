@@ -1,0 +1,568 @@
+:root {
+  --primary: #009ee2;
+  --accent: #0078c2;
+  --light: #c1e8ff;
+  --dark: #003f6b;
+  --background-overlay: rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  color: white;
+  position: relative;
+  z-index: 1;
+  background: var(--dark);
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  filter: blur(6px) brightness(0.5);
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--background-overlay);
+  position: relative;
+  z-index: 1002;
+}
+
+.logo-wrapper {
+  width: 60px;
+  height: 60px;
+  perspective: 1000px;
+}
+
+.logo-rotator {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.logo-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.front-face {
+  transform: rotateY(0deg);
+}
+
+.back-face {
+  transform: rotateY(180deg);
+}
+
+.logo-wrapper:hover .logo-rotator {
+  transform: rotateY(180deg);
+  transition: transform 0.8s ease;
+}
+
+.hamburger {
+  width: 30px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+  display: none;
+  z-index: 1003;
+}
+
+.hamburger span {
+  background: #0078c2;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  transition: 0.4s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 11px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 22px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 11px;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 11px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #b5e2ff;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: var(--primary) ;
+}
+
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.hero {
+  margin: 0 0 4rem 0;
+}
+
+.main-logo {
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+} 
+
+.cta-button {
+  padding: 0.8rem 1.5rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--accent);
+}
+
+.pricing-table {
+  margin: 2rem auto;
+  border-collapse: collapse;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pricing-table th,
+.pricing-table td {
+  border: 1px solid var(--light);
+  padding: 1rem;
+  color: white;
+}
+
+.pricing-table th {
+  background-color: var(--primary);
+}
+
+.media-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 1rem;
+}
+
+.media-grid img,
+.media-grid iframe {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.socials {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.socials img {
+  height: 40px;
+  transition: transform 0.2s ease;
+}
+
+.socials img:hover {
+  transform: scale(1.1);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--background-overlay);
+    position: absolute;
+    right: 2rem;
+    top: 80px;
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 1002;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .logo-rotator {
+    animation: spinLogo 5s linear infinite;
+  }
+
+  .logo-wrapper:hover .logo-rotator {
+    transition: none;
+  }
+
+  @keyframes spinLogo {
+    0% {
+      transform: rotateY(0deg);
+    }
+    49.999% {
+      transform: rotateY(179.99deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+}
+
+/* boutique */
+.shop-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.shop-section h2 {
+  font-size: 2.5rem;
+  color: var(--light);
+  margin-bottom: 1rem;
+}
+
+.shop-section {
+  padding: 4rem 1rem;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+.product-card {
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  color: var(--light);
+  margin-bottom: 0.5rem;
+}
+
+.product-card p {
+  font-size: 0.95rem;
+  color: #e0f7ff;
+  margin-bottom: 1rem;
+}
+
+.product-card .price {
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+}
+
+.product-card button {
+  background-color: var(--accent);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: var(--primary);
+}
+
+/* contact */
+.contact-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background: var(--primary);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: var(--accent);
+}
+
+.hidden {
+  display: none;
+}
+
+/* booking */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #111;
+  color: #f5f5f5;
+}
+
+header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.calendly-container {
+  position: relative;
+  padding-bottom: 125%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.calendly-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.lower-padding{
+  margin: 0 0 2rem 0;
+}
+
+/* --- Services déroulants --- */
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pricing-table th,
+.pricing-table td {
+  border-bottom: 1px solid #333;
+  padding: 12px;
+  text-align: left;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.toggle-btn.open {
+  transform: rotate(180deg);
+}
+
+.service-description {
+  display: none;
+  background-color: rgba(255,255,255,0.05);
+  color: #ccc;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.service-description.show {
+  display: table-row;
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  text-align: left;
+}
+
+/* Section title */
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Each FAQ item block */
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* The clickable question */
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  cursor: pointer;
+  position: relative;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+/* + / – icon on the right */
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, content 0.3s ease;
+}
+
+.faq-question.open::after {
+  content: "–";
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Hidden answer container */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  color: #ccc;
+  opacity: 0;
+}
+
+/* Visible answer state (when JS adds .open) */
+.faq-question.open + .faq-answer {
+  max-height: 500px; /* adjusted dynamically if needed */
+  opacity: 1;
+}
+
+/* Text inside the answer */
+.faq-answer p {
+  padding: 0.5rem 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
