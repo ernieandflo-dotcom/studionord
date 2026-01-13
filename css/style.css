@@ -35,6 +35,7 @@
   
   .placeholder {
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,4 +69,91 @@
     color: #aaa;
     text-decoration: none;
   }
-  
+
+  /* === COUNTDOWN OVERLAY === */
+
+#countdown-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 11, 0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.6s ease;
+}
+
+#countdown-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.countdown-card {
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+#countdown-overlay.hidden .countdown-card {
+  transform: translateY(-80px) scale(0.95);
+  opacity: 0;
+}
+
+.clock {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+#enter-site {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#enter-site:hover {
+  border-color: white;
+  background: rgba(255,255,255,0.05);
+}
+
+.video-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === INSTAGRAM FOLLOW BUTTON === */
+
+.ig-follow {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+
+  padding: 0.6rem 1.1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: white;
+  text-decoration: none;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+
+  transition: all 0.25s ease;
+}
+
+.ig-follow:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: white;
+}
