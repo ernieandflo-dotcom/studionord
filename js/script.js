@@ -2,7 +2,7 @@
    COUNTDOWN
 ========================= */
 
-const openingDate = new Date("2026-01-15T11:00:00");
+const openingDate = new Date("2026-01-15T20:00:00");
 
 const cdDays = document.getElementById("cd-days");
 const cdHours = document.getElementById("cd-hours");
