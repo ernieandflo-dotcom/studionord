@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Studio Nord</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="overlay"></div>
+  <header>
+    <div class="logo-wrapper">
+      <div class="logo-rotator" onclick="window.location.href='index.html';" style="cursor:pointer;">
+        <img src="assets/logoSN_v0.3.png" alt="Logo Studio Nord" class="logo-face front-face" />
+        <img src="assets/logoEtoile_v0.5.png" alt="Logo Étoile" class="logo-face back-face" />
+      </div>
+    </div>
+    <nav>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#booking">Tarifs</a></li>
+        <li><a href="booking.html">Réserver</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Contactez-nous</h1>
+      <p>Pour toute question, projet ou collaboration</p>
+    </section>
+
+    <section class="contact-section">
+      <label for="contact-role">Vous êtes :</label>
+      <select id="contact-role">
+        <option value="default">Autre</option>
+        <option value="creator">Artiste (voix)</option>
+        <option value="creator">Beatmaker / Instrumentaliste</option>
+        <option value="creator">Créateur-créatrice de contenu</option>
+      </select>
+
+      <form id="default-form" class="contact-form">
+        <input type="text" placeholder="Votre nom" required />
+        <input type="email" placeholder="Votre courriel" required />
+        <textarea placeholder="Votre message" rows="5" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <form id="creator-form" class="contact-form hidden">
+        <input type="text" placeholder="Nom ou alias artistique" required />
+        <input type="email" placeholder="Adresse courriel" required />
+        <input type="url" placeholder="Lien vers votre portfolio / Soundcloud / YouTube" required />
+        <select required>
+          <option value="">Type de collaboration souhaitée</option>
+          <option value="beat">Soumettre des beats</option>
+          <option value="collab">Proposer un projet</option>
+          <option value="autre">Autre</option>
+        </select>
+        <textarea placeholder="Parlez-nous de votre proposition" rows="5" required></textarea>
+        <button type="submit">Soumettre</button>
+      </form>
+    </section>
+    <section class="faq-section">
+    <h2>Questions fréquentes</h2>
+  
+    <div class="faq-item">
+      <button class="faq-question">Quels sont vos tarifs pour une session studio ?</button>
+      <div class="faq-answer">
+        <p>Nos tarifs varient selon la durée et le type de session. Vous pouvez consulter tous les détails sur la page <a href="index.html#booking">Tarifs</a>.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Comment réserver une session ?</button>
+      <div class="faq-answer">
+        <p>Vous pouvez réserver directement sur notre page <a href="booking.html">Réserver</a> en choisissant le créneau et le type de session qui vous convient.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Quels formats audio puis-je apporter ou recevoir ?</button>
+      <div class="faq-answer">
+        <p>Pour une meilleure qualité, veuillez préparer des fichiers WAV pour vos projets. Nous pouvons toutefois aussi travailler à partir de fichers MP3 si c'est tout ce que vous avez. Les exportations se font en WAV et MP3.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Quelle est la durée des séances studio ?</button>
+      <div class="faq-answer">
+        <p>La durée des séances studio dépendent de votre réservation. Il est possible de réserver pour des séance de 1 heure ou 2 heures via l'outil de réservation en ligne <a href="booking.html">(Réserver). Pour des séances plus longues, veuillez nous contacter directement pour la céduler.</a></p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Est-il possible de prolonger une séance studio ?</button>
+      <div class="faq-answer">
+        <p>Oui ! Toutefois, cela dépend de plusieurs facteurs comme la disponibilité des lieux, celle des ingénieur son et l'heure de la journée. À noter que des frais supplémentaires s'ajoutent.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Puis-je offrir une carte cadeau à une autre personne que moi-même ?</button>
+      <div class="faq-answer">
+        <p>Oui ! Vous pouvez acheter une carte cadeau pour l'offrir à un proche ou toute autre personne.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Est-ce que les cartes cadeaux ont une date d'expiration ?</button>
+      <div class="faq-answer">
+        <p>La valeur d'achat de la carte cadeau est valide et utilisable pour la vie. Toutefois, si la carte cadeau était émise pour un produit ou un service pour lequel le prix a changé, pour avoir droit à ce produit ou service même, il faudra en payer la différence. Si le produit ou service n'est plus offert, vous pouvez tout de même utiliser la valeur monétaire de la carte cadeau pour un autre produit ou service offert (pour lesquels il est possible de payer avec une carte cadeau).</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Peux-on échanger les cartes cadeaux pour de l'argent ?</button>
+      <div class="faq-answer">
+        <p>Conformément à la loi canadienne et québécoise sur la protection du consommateur, une carte-cadeau est un instrument de paiement prépayé destiné à l’achat de biens ou de services auprès de l’émetteur indiqué. Elle ne peut pas être échangée contre de l’argent, sauf si la loi l’exige dans des cas particuliers.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Puis-je proposer un projet collaboratif ?</button>
+      <div class="faq-answer">
+        <p>Oui ! Sélectionnez "Créateur-créatrice de contenu" dans le formulaire ci-dessus et détaillez votre proposition.</p>
+      </div>
+    </div>
+  
+    <div class="faq-item">
+      <button class="faq-question">Engagez-vous présentement ?</button>
+      <div class="faq-answer">
+        <p>Pas présentement. Cependant, si vous croyez pouvoir apporter une valeur unique à l’équipe, que ce soit par votre talent ou votre savoir-faire, n’hésitez pas à nous faire parvenir une candidature spontanée au travers du formulaire ci-haut. Studio Nord reste toujours ouvert aux rencontres qui peuvent faire une vraie différence.</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
