@@ -1,77 +1,98 @@
+/* === RESET & BASE === */
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    background: #0b0b0b;
-    color: white;
-  }
-  
-  .top-bar {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    opacity: 0.85;
-  }
-  
-  .video-wall {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .video-tile {
-    position: relative;
-    aspect-ratio: 9 / 16;
-    background: #111;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .placeholder {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    opacity: 0.6;
-  }
-  
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .video-tile:hover .overlay {
-    opacity: 1;
-  }
-  
-  .overlay p {
-    margin: 0 0 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .overlay a {
-    font-size: 0.8rem;
-    color: #aaa;
-    text-decoration: none;
-  }
+  box-sizing: border-box;
+}
 
-  /* === COUNTDOWN OVERLAY === */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0b0b0b;
+  color: white;
+}
 
+/* === TOP BAR === */
+.top-bar {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+/* === VIDEO WALL === */
+.video-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.video-tile {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* état actif (mobile & desktop) */
+.video-tile.playing {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+/* === VIDEO CONTAINER === */
+.placeholder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* vidéo elle-même */
+.video-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* === OVERLAY TEXTE === */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* hover desktop */
+.video-tile:hover .overlay {
+  opacity: 1;
+}
+
+/* overlay visible si vidéo en lecture (mobile) */
+.video-tile.playing .overlay {
+  opacity: 1;
+}
+
+.overlay p {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.overlay a {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-decoration: none;
+}
+
+/* === COUNTDOWN OVERLAY === */
 #countdown-overlay {
   position: fixed;
   inset: 0;
@@ -123,14 +144,7 @@
   background: rgba(255,255,255,0.05);
 }
 
-.video-tile video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* === INSTAGRAM FOLLOW BUTTON === */
-
 .ig-follow {
   position: fixed;
   bottom: 1.25rem;
