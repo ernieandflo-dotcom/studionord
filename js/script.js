@@ -1,5 +1,8 @@
-/* === COUNTDOWN === */
-const openingDate = new Date("2026-01-15T20:00:00");
+/* =========================
+   COUNTDOWN
+========================= */
+
+const openingDate = new Date("2026-01-15T11:00:00");
 
 const cdDays = document.getElementById("cd-days");
 const cdHours = document.getElementById("cd-hours");
@@ -44,63 +47,54 @@ enterBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
 });
 
-/* === VIDEO INTERACTION (MOBILE-FIRST SAFE) === */
+/* =========================
+   VIDEO AUTOPLAY (DESKTOP + MOBILE)
+========================= */
+
 const videos = document.querySelectorAll(".wall-video");
-const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
-let activeVideo = null;
+function forceMutedAutoplay(video) {
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
 
-function stopActiveVideo() {
-  if (!activeVideo) return;
-
-  activeVideo.pause();
-  activeVideo.muted = true;
-  activeVideo.closest(".video-tile")?.classList.remove("playing");
-  activeVideo = null;
+  const attempt = video.play();
+  if (attempt !== undefined) {
+    attempt.catch(() => {
+      // Safari iOS peut refuser tant que le rendu n'est pas stabilisé
+      // → on réessaie après un micro délai
+      setTimeout(() => {
+        video.play().catch(() => {});
+      }, 300);
+    });
+  }
 }
 
-/* autoplay muted desktop uniquement */
-if (!isMobile) {
-  videos.forEach(video => {
-    video.muted = true;
-    video.loop = true;
-
-    const p = video.play();
-    if (p !== undefined) {
-      p.catch(() => {});
-    }
-  });
-}
-
-/* tap-to-play mobile + contrôle global */
+/* lancer autoplay dès que possible */
 videos.forEach(video => {
-  video.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    if (activeVideo === video) {
-      stopActiveVideo();
-      return;
-    }
-
-    stopActiveVideo();
-
-    activeVideo = video;
-    video.muted = false;
-    video.loop = true;
-
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        video.muted = true;
-        video.play();
-      });
-    }
-
-    video.closest(".video-tile")?.classList.add("playing");
-  });
+  forceMutedAutoplay(video);
 });
 
-/* clic extérieur → stop */
-document.addEventListener("click", () => {
-  stopActiveVideo();
+/* sécurité supplémentaire pour Safari iOS */
+document.addEventListener(
+  "visibilitychange",
+  () => {
+    if (!document.hidden) {
+      videos.forEach(video => {
+        if (video.paused) {
+          forceMutedAutoplay(video);
+        }
+      });
+    }
+  },
+  false
+);
+
+/* fallback après chargement complet */
+window.addEventListener("load", () => {
+  videos.forEach(video => {
+    if (video.paused) {
+      forceMutedAutoplay(video);
+    }
+  });
 });
