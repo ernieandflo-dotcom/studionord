@@ -1,7 +1,4 @@
-/* =========================
-   COUNTDOWN
-========================= */
-
+/* === COUNTDOWN (CLOCK ONLY — HEADER IS HARD-CODED) === */
 const openingDate = new Date("2026-01-15T20:00:00");
 
 const cdDays = document.getElementById("cd-days");
@@ -9,7 +6,6 @@ const cdHours = document.getElementById("cd-hours");
 const cdMinutes = document.getElementById("cd-minutes");
 const cdSeconds = document.getElementById("cd-seconds");
 
-const daysDisplay = document.getElementById("days");
 const overlay = document.getElementById("countdown-overlay");
 const enterBtn = document.getElementById("enter-site");
 
@@ -22,11 +18,11 @@ function updateCountdown() {
     cdHours.textContent = "00";
     cdMinutes.textContent = "00";
     cdSeconds.textContent = "00";
-    daysDisplay.textContent = "0";
     return;
   }
 
   const totalSeconds = Math.floor(diff / 1000);
+
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -36,65 +32,72 @@ function updateCountdown() {
   cdHours.textContent = String(hours).padStart(2, "0");
   cdMinutes.textContent = String(minutes).padStart(2, "0");
   cdSeconds.textContent = String(seconds).padStart(2, "0");
-
-  daysDisplay.textContent = days;
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-enterBtn.addEventListener("click", () => {
-  overlay.classList.add("hidden");
+enterBtn?.addEventListener("click", () => {
+  overlay?.classList.add("hidden");
 });
 
-/* =========================
-   VIDEO AUTOPLAY (DESKTOP + MOBILE)
-========================= */
-
+/* === VIDEO INTERACTION (MOBILE-FIRST SAFE) === */
 const videos = document.querySelectorAll(".wall-video");
+const isMobile = window.matchMedia("(pointer: coarse)").matches;
 
-function forceMutedAutoplay(video) {
-  video.muted = true;
-  video.loop = true;
-  video.playsInline = true;
+let activeVideo = null;
 
-  const attempt = video.play();
-  if (attempt !== undefined) {
-    attempt.catch(() => {
-      // Safari iOS peut refuser tant que le rendu n'est pas stabilisé
-      // → on réessaie après un micro délai
-      setTimeout(() => {
-        video.play().catch(() => {});
-      }, 300);
-    });
-  }
+function stopActiveVideo() {
+  if (!activeVideo) return;
+
+  activeVideo.pause();
+  activeVideo.muted = true;
+  activeVideo.closest(".video-tile")?.classList.remove("playing");
+  activeVideo = null;
 }
 
-/* lancer autoplay dès que possible */
-videos.forEach(video => {
-  forceMutedAutoplay(video);
-});
-
-/* sécurité supplémentaire pour Safari iOS */
-document.addEventListener(
-  "visibilitychange",
-  () => {
-    if (!document.hidden) {
-      videos.forEach(video => {
-        if (video.paused) {
-          forceMutedAutoplay(video);
-        }
-      });
-    }
-  },
-  false
-);
-
-/* fallback après chargement complet */
-window.addEventListener("load", () => {
+/* autoplay muted — desktop only */
+if (!isMobile) {
   videos.forEach(video => {
-    if (video.paused) {
-      forceMutedAutoplay(video);
+    video.muted = true;
+    video.loop = true;
+
+    const p = video.play();
+    if (p !== undefined) {
+      p.catch(() => {});
     }
   });
+}
+
+/* tap-to-play — mobile + exclusive playback */
+videos.forEach(video => {
+  video.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    if (activeVideo === video) {
+      stopActiveVideo();
+      return;
+    }
+
+    stopActiveVideo();
+
+    activeVideo = video;
+    video.muted = false;
+    video.loop = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        video.muted = true;
+        video.play();
+      });
+    }
+
+    video.closest(".video-tile")?.classList.add("playing");
+  });
+});
+
+/* click outside → stop */
+document.addEventListener("click", () => {
+  stopActiveVideo();
 });
