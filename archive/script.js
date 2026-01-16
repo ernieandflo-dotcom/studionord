@@ -26,8 +26,10 @@ navItems.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
-// --- Gestion du formulaire contact (si présent) ---
+// --- DOMContentLoaded ---
 document.addEventListener("DOMContentLoaded", () => {
+
+  // --- Gestion du formulaire contact (si présent) ---
   const roleSelect = document.getElementById("contact-role");
   const defaultForm = document.getElementById("default-form");
   const creatorForm = document.getElementById("creator-form");
@@ -44,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Gestion des descriptions de services (index.html ou booking.html) ---
+  // --- Gestion des descriptions de services ---
   const toggleButtons = document.querySelectorAll(".toggle-btn");
 
   toggleButtons.forEach(button => {
     button.addEventListener("click", () => {
-      const descriptionRow = button.closest("tr").nextElementSibling;
+      const descriptionRow = button.closest("tr")?.nextElementSibling;
 
       if (descriptionRow && descriptionRow.classList.contains("service-description")) {
         const isVisible = descriptionRow.style.display === "table-row";
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Gestion FAQ accordéon avec animation glissante ---
+  // --- Gestion FAQ accordéon ---
   const faqQuestions = document.querySelectorAll(".faq-question");
 
   faqQuestions.forEach(question => {
@@ -68,14 +70,67 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = question.classList.contains("open");
 
       if (isOpen) {
-        // Fermer
         answer.style.maxHeight = null;
       } else {
-        // Ouvrir
         answer.style.maxHeight = answer.scrollHeight + "px";
       }
 
       question.classList.toggle("open", !isOpen);
     });
   });
+
+  // ======================================================
+  // === BEATS : lecture / pause au clic sur l'image ===
+  // ======================================================
+
+  let currentlyPlayingAudio = null;
+  let currentlyPlayingImage = null;
+
+  document.querySelectorAll(".beat-card").forEach(card => {
+    const image = card.querySelector(".beat-image");
+    const audio = card.querySelector("audio");
+
+    if (!image || !audio) return;
+
+    image.addEventListener("click", () => {
+
+      // Même beat → toggle play / pause
+      if (audio === currentlyPlayingAudio) {
+        if (audio.paused) {
+          audio.play();
+          image.classList.add("playing");
+        } else {
+          audio.pause();
+          image.classList.remove("playing");
+        }
+        return;
+      }
+
+      // Arrêter le beat en cours
+      if (currentlyPlayingAudio) {
+        currentlyPlayingAudio.pause();
+        currentlyPlayingAudio.currentTime = 0;
+        if (currentlyPlayingImage) {
+          currentlyPlayingImage.classList.remove("playing");
+        }
+      }
+
+      // Lancer le nouveau beat
+      audio.play();
+      image.classList.add("playing");
+
+      currentlyPlayingAudio = audio;
+      currentlyPlayingImage = image;
+    });
+
+    // Nettoyage quand le beat se termine
+    audio.addEventListener("ended", () => {
+      image.classList.remove("playing");
+      if (audio === currentlyPlayingAudio) {
+        currentlyPlayingAudio = null;
+        currentlyPlayingImage = null;
+      }
+    });
+  });
+
 });
