@@ -566,3 +566,18 @@ footer {
   line-height: 1.5;
   font-size: 0.95rem;
 }
+
+/* Beat playing */
+.beat-image {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.beat-image:hover {
+  transform: scale(1.02);
+}
+
+.beat-image.playing {
+  opacity: 0.75;
+}
+
