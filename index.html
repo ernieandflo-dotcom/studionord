@@ -1,162 +1,156 @@
-<!-- PAGE TEMPORAIRE -->
-<!-- Devient par la suite decompte.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Studio Nord — Décompte</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Nord</title>
+  <link rel="stylesheet" href="archive/style.css" />
 </head>
-
 <body>
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/sadabooth.MOV" type="video/mp4" />
+    Ton navigateur ne supporte pas la vidéo HTML5.
+  </video>
 
-<!-- === COUNTDOWN OVERLAY === -->
-<div id="countdown-overlay">
-  <div class="countdown-card">
-    <div class="clock">
-      <span id="cd-days">00</span>j
-      <span id="cd-hours">00</span>h
-      <span id="cd-minutes">00</span>m
-      <span id="cd-seconds">00</span>s
-    </div>
-    <button id="enter-site">Suivre le décompte</button>
-  </div>
-</div>
+  <header>
+    <div id="overlay"></div>
+    <a href="index.html" class="logo-wrapper">
+      <div class="logo-rotator">
+        <img src="assets/logoSN_v0.3.png" alt="Logo Studio Nord" class="logo-face front-face" />
+        <img src="assets/logoEtoile_v0.5.png" alt="Logo Étoile" class="logo-face back-face" />
+      </div>
+    </a>
 
-<header class="top-bar"> 
-  <h1>15 janvier 2026 : Jour J 🎊🎊🎊</h1> 
-</header>
+    <nav>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#booking">Tarifs</a></li>
+        <li><a href="booking.html">Réserver</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- === VIDEO WALL === -->
-<main class="video-wall">
+  <main>
+    <section class="hero">
+      <div>
+        <img src="assets/logoSN_v0.7.png" alt="Logo principal" class="main-logo" />
+      </div>
+      <a href="booking.html" class="cta-button">Réserver une séance</a>
+    </section>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_Jour5-Comp65.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J-5 — Le décompte est lancé 🕚</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Voir sur Instagram
-      </a>
-    </div>
-  </div>
+    <section id="booking" class="lower-padding">
+      <p>Choisissez une plage horaire via notre outil de réservation ou contactez-nous directement.</p>
+    </section>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_Jour4_720.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J-4 — Gardez l'œil ouvert 👀</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Voir sur Instagram
-      </a>
-    </div>
-  </div>
+    <section id="tarifs">
+      <h2>Tarifs</h2>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_Jour3.MP4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J-3 — Quand 12 = 3 !? 🤨</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Voir sur Instagram
-      </a>
-    </div>
-  </div>
+      <!-- Version interactive du tableau -->
+      <table class="pricing-table">
+        <tr><th>Service</th><th>Durée</th><th>Prix</th></tr>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_Jour2.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J-2 — 199 2e Avenue, QC, Limoilou ⚜️</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Voir sur Instagram
-      </a>
-    </div>
-  </div>
+        <tr class="service-row">
+          <td>
+            Enregistrement HD
+            <button class="toggle-btn" aria-label="Voir la description">&#9662;</button>
+          </td>
+          <td>1h</td>
+          <td>65$</td>
+        </tr>
+        <tr class="service-description">
+          <td colspan="3">
+            Enregistrez votre voix dans un espace optimisé, avec accompagnement technique pour capturer un son net et expressif. <br>
+            Recevez une version WAV et MP3 (non-mixées) de votre chanson après la séance.
+          </td>
+        </tr>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_Jour1_720.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J-1 — C'tu ouvert ? 🔐🏃💨💢</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Voir sur Instagram
-      </a>
-    </div>
-  </div>
+        <tr class="service-row">
+          <td>
+            Enregistrement HD PLUS
+            <button class="toggle-btn" aria-label="Voir la description">&#9662;</button>
+          </td>
+          <td>2h</td>
+          <td>115$</td>
+        </tr>
+        <tr class="service-description">
+          <td colspan="3">
+            Session d’enregistrement étendue. Idéale pour les morceaux plus complexes, les projets exigeants ou les artistes qui souhaitent prendre le temps nécessaire.
+          </td>
+        </tr>
 
-  <div class="video-tile">
-    <div class="placeholder">
-      <video
-        class="wall-video"
-        src="assets/decompte/DecompteSN_placeholderSN.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-    </div>
-    <div class="overlay">
-      <p>Jour J — 😱😱😱</p>
-      <a href="https://www.instagram.com/o.studionord/" target="_blank" rel="noopener">
-        Participer
-      </a>
-    </div>
-  </div>
+        <tr class="service-row">
+          <td>
+            Forfait M&M
+            <button class="toggle-btn" aria-label="Voir la description">&#9662;</button>
+          </td>
+          <td>3h</td>
+          <td>320$</td>
+        </tr>
+        <tr class="service-description">
+          <td colspan="3">
+            Inclut 3 heures d'enregistrement, le mixage détaillé des pistes vocales et instrumentales séparées (stems)(lorsque disponibles) pour un contrôle précis du son. Comprend également le mastering du projet final. Une solution complète de production sonore.          </td>
+        </tr>
 
-</main>
+        <tr class="service-row">
+          <td>
+            Personnalisé
+            <button class="toggle-btn" aria-label="Voir la description">&#9662;</button>
+          </td>
+          <td>Contacter</td>
+          <td>Contacter</td>
+        </tr>
+        <tr class="service-description">
+          <td colspan="3">
+            Vous avez un projet d’envergure ? EP ou album ? Contactez-nous pour discuter de vos besoins spécifiques et obtenir une soumission personnalisée.          </td>
+        </tr>
+      </table>
+    </section>
+    
+    <section class="lower-padding">
+        <a href="booking.html" class="cta-button">Réserver une séance</a>
+    </section>
 
-<!-- === INSTAGRAM FOLLOW === -->
-<a
-  href="https://www.instagram.com/o.studionord/"
-  target="_blank"
-  rel="noopener"
-  class="ig-follow"
->
-  Follow sur Instagram
-</a>
+    <section id="media" class="lower-padding">
+      <h2>Artistes vedette au Studio Nord</h2>
+      <div class="media-grid">
+        <iframe src="https://www.youtube.com/embed/26F8rEkFMqo?si=x_LGkjK5-gsE9I96" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/I3_h2ZgLqYA?si=fH5pGbNX1eUvAHIA" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/2HdqqXLdFQI?si=6_jGewEJua8s_HkT" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
 
-<script src="js/script.js"></script>
+    <section id="contact">
+      <h2>Rejoignez la communauté</h2>
+      <div class="socials">
+        <a href="https://www.instagram.com/o.studionord/" target="_blank">
+          <img src="assets/instagram.png" alt="Instagram" />
+        </a>
+
+        <!-- Youtube
+        <a href="https://youtube.com" target="_blank">
+          <img src="assets/youtube.png" alt="YouTube" />
+        </a>
+        Youtube -->
+
+        <a href="https://discord.gg/kTXP3u4tdQ" target="_blank">
+          <img src="assets/discord.png" alt="Discord" />
+        </a>
+
+        <!-- email
+        <a href="mailto:info@ostudionord.ca">
+          <img src="assets/email.png" alt="Email" />
+        </a>
+        email -->
+      </div>
+    </section>
+  </main>
+
+  <script src="archive/script.js"></script>
 </body>
 </html>
