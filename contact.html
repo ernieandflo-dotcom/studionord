@@ -44,25 +44,50 @@
         <option value="creator">Créateur-créatrice de contenu</option>
       </select>
 
-      <form id="default-form" class="contact-form">
-        <input type="text" placeholder="Votre nom" required />
-        <input type="email" placeholder="Votre courriel" required />
-        <textarea placeholder="Votre message" rows="5" required></textarea>
+      <form
+        id="default-form"
+        class="contact-form"
+        action="https://formsubmit.co/ernest@ostudionord.ca"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Nouveau message – Contact Studio Nord">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <input type="text" name="name" placeholder="Votre nom" required />
+        <input type="email" name="email" placeholder="Votre courriel" required />
+        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+
+        <input type="text" name="_honey" style="display:none">
         <button type="submit">Envoyer</button>
       </form>
 
-      <form id="creator-form" class="contact-form hidden">
-        <input type="text" placeholder="Nom ou alias artistique" required />
-        <input type="email" placeholder="Adresse courriel" required />
-        <input type="url" placeholder="Lien vers votre portfolio / Soundcloud / YouTube" />
-        <select required>
+      <form
+        id="creator-form"
+        class="contact-form hidden"
+        action="https://formsubmit.co/ernest@ostudionord.ca"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Nouvelle proposition – Studio Nord">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://ostudionord.ca/merci.html">
+
+        <input type="text" name="artist_name" placeholder="Nom ou alias artistique" required />
+        <input type="email" name="email" placeholder="Adresse courriel" required />
+        <input type="url" name="portfolio" placeholder="Lien vers votre portfolio / Soundcloud / YouTube" />
+
+        <select name="collaboration_type" required>
           <option value="">Type de collaboration souhaitée</option>
-          <option value="beat">Soumettre des beats</option>
-          <option value="collab">Proposer un projet</option>
-          <option value="autre">Autre</option>
+          <option value="beats">Soumettre des beats</option>
+          <option value="project">Proposer un projet</option>
+          <option value="other">Autre</option>
         </select>
-        <textarea placeholder="Parlez-nous de votre proposition" rows="5" required></textarea>
-        <button type="submit">Soumettre</button>
+
+        <textarea name="message" placeholder="Parlez-nous de votre proposition" rows="5" required></textarea>
+
+        <input type="text" name="_honey" style="display:none">
+        <button type="submit">Envoyer</button>
       </form>
     </section>
     <section class="faq-section">
