@@ -196,5 +196,47 @@
   </main>
 
   <script src="archive/script.js"></script>
+
+<!-- === Beat notification modal === -->
+<div id="notify-modal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Fermer">×</button>
+
+    <h2>Être informé de la sortie des beats</h2>
+
+    <form
+      action="https://formspree.io/f/mpqqqdbo"
+      method="POST"
+      class="notify-form"
+    >
+      <!-- Honeypot (bots will fill this) -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hp">
+
+      <label>
+        Nom
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Email
+        <input type="email" name="email" required>
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" name="beats_consent" required>
+        J’accepte de recevoir des emails concernant la sortie de nouveaux beats et les offres liées aux beats.
+      </label>
+
+      <label class="checkbox">
+        <input type="checkbox" name="newsletter">
+        Je souhaite recevoir l’ensemble des infolettres Studio Nord.
+      </label>
+
+      <input type="hidden" name="source" value="Boutique – Beats beta">
+
+      <button type="submit">M’informer</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
