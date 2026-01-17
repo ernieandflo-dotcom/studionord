@@ -749,3 +749,43 @@ footer {
   70% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); }
 }
+
+
+/* ==========================
+   === Business Info Block ===
+   ========================== */
+.business-info {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+}
+  
+.business-info h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+  
+.business-info p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+  
+.business-name {
+  font-weight: 600;
+}
+  
+.business-address {
+  opacity: 0.85;
+}
+
+.business-email {
+  margin-top: 0.8rem;
+  opacity: 0.85;
+}
+
+.business-phone {
+  margin-top: 0.8rem;
+}
