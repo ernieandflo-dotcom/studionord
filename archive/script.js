@@ -1,4 +1,7 @@
-// --- Gestion du menu hamburger ---
+// ======================================================
+// === MENU HAMBURGER ===
+// ======================================================
+
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const overlay = document.getElementById('overlay');
@@ -10,7 +13,7 @@ function closeMenu() {
   if (overlay) overlay.style.display = 'none';
 }
 
-if (hamburger) {
+if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('show');
     hamburger.classList.toggle('active');
@@ -26,61 +29,60 @@ navItems.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
-// --- DOMContentLoaded ---
+// ======================================================
+// === DOM READY ===
+// ======================================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  // --- Gestion du formulaire contact (si présent) ---
+  // --------------------------------------------------
+  // Contact form switch
+  // --------------------------------------------------
+
   const roleSelect = document.getElementById("contact-role");
   const defaultForm = document.getElementById("default-form");
   const creatorForm = document.getElementById("creator-form");
 
   if (roleSelect && defaultForm && creatorForm) {
     roleSelect.addEventListener("change", () => {
-      if (roleSelect.value === "creator") {
-        defaultForm.classList.add("hidden");
-        creatorForm.classList.remove("hidden");
-      } else {
-        defaultForm.classList.remove("hidden");
-        creatorForm.classList.add("hidden");
-      }
+      const isCreator = roleSelect.value === "creator";
+      defaultForm.classList.toggle("hidden", isCreator);
+      creatorForm.classList.toggle("hidden", !isCreator);
     });
   }
 
-  // --- Gestion des descriptions de services ---
-  const toggleButtons = document.querySelectorAll(".toggle-btn");
+  // --------------------------------------------------
+  // Services descriptions toggle
+  // --------------------------------------------------
 
-  toggleButtons.forEach(button => {
+  document.querySelectorAll(".toggle-btn").forEach(button => {
     button.addEventListener("click", () => {
       const descriptionRow = button.closest("tr")?.nextElementSibling;
+      if (!descriptionRow || !descriptionRow.classList.contains("service-description")) return;
 
-      if (descriptionRow && descriptionRow.classList.contains("service-description")) {
-        const isVisible = descriptionRow.style.display === "table-row";
-        descriptionRow.style.display = isVisible ? "none" : "table-row";
-        button.classList.toggle("open", !isVisible);
-      }
+      const isVisible = descriptionRow.style.display === "table-row";
+      descriptionRow.style.display = isVisible ? "none" : "table-row";
+      button.classList.toggle("open", !isVisible);
     });
   });
 
-  // --- Gestion FAQ accordéon ---
-  const faqQuestions = document.querySelectorAll(".faq-question");
+  // --------------------------------------------------
+  // FAQ accordion
+  // --------------------------------------------------
 
-  faqQuestions.forEach(question => {
+  document.querySelectorAll(".faq-question").forEach(question => {
     question.addEventListener("click", () => {
       const answer = question.nextElementSibling;
+      if (!answer) return;
+
       const isOpen = question.classList.contains("open");
-
-      if (isOpen) {
-        answer.style.maxHeight = null;
-      } else {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-      }
-
+      answer.style.maxHeight = isOpen ? null : answer.scrollHeight + "px";
       question.classList.toggle("open", !isOpen);
     });
   });
 
   // ======================================================
-  // === BEATS : lecture / pause au clic sur l'image ===
+  // === BEATS : play / pause on image click ===
   // ======================================================
 
   let currentlyPlayingAudio = null;
@@ -94,10 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     image.addEventListener("click", () => {
 
-      // Même beat → toggle play / pause
+      // Same beat → toggle
       if (audio === currentlyPlayingAudio) {
         if (audio.paused) {
-          audio.play();
+          audio.play().catch(() => {});
           image.classList.add("playing");
         } else {
           audio.pause();
@@ -106,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Arrêter le beat en cours
+      // Stop previous beat
       if (currentlyPlayingAudio) {
         currentlyPlayingAudio.pause();
         currentlyPlayingAudio.currentTime = 0;
@@ -115,15 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Lancer le nouveau beat
-      audio.play();
+      // Play new beat
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
       image.classList.add("playing");
 
       currentlyPlayingAudio = audio;
       currentlyPlayingImage = image;
     });
 
-    // Nettoyage quand le beat se termine
+    // Cleanup when finished
     audio.addEventListener("ended", () => {
       image.classList.remove("playing");
       if (audio === currentlyPlayingAudio) {
