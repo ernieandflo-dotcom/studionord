@@ -1,7 +1,6 @@
-// ======================================================
+// =====================================================
 // === MENU HAMBURGER ===
-// ======================================================
-
+// =====================================================
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const overlay = document.getElementById('overlay');
@@ -13,7 +12,7 @@ function closeMenu() {
   if (overlay) overlay.style.display = 'none';
 }
 
-if (hamburger && navLinks) {
+if (hamburger) {
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('show');
     hamburger.classList.toggle('active');
@@ -29,62 +28,60 @@ navItems.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
 
-// ======================================================
+// =====================================================
 // === DOM READY ===
-// ======================================================
-
+// =====================================================
 document.addEventListener("DOMContentLoaded", () => {
 
-  // --------------------------------------------------
-  // Contact form switch
-  // --------------------------------------------------
-
+  // =====================================================
+  // === CONTACT FORM SWITCH (if present) ===
+  // =====================================================
   const roleSelect = document.getElementById("contact-role");
   const defaultForm = document.getElementById("default-form");
   const creatorForm = document.getElementById("creator-form");
 
   if (roleSelect && defaultForm && creatorForm) {
     roleSelect.addEventListener("change", () => {
-      const isCreator = roleSelect.value === "creator";
-      defaultForm.classList.toggle("hidden", isCreator);
-      creatorForm.classList.toggle("hidden", !isCreator);
+      if (roleSelect.value === "creator") {
+        defaultForm.classList.add("hidden");
+        creatorForm.classList.remove("hidden");
+      } else {
+        defaultForm.classList.remove("hidden");
+        creatorForm.classList.add("hidden");
+      }
     });
   }
 
-  // --------------------------------------------------
-  // Services descriptions toggle
-  // --------------------------------------------------
-
+  // =====================================================
+  // === SERVICES DESCRIPTIONS ===
+  // =====================================================
   document.querySelectorAll(".toggle-btn").forEach(button => {
     button.addEventListener("click", () => {
-      const descriptionRow = button.closest("tr")?.nextElementSibling;
-      if (!descriptionRow || !descriptionRow.classList.contains("service-description")) return;
+      const row = button.closest("tr")?.nextElementSibling;
+      if (!row) return;
 
-      const isVisible = descriptionRow.style.display === "table-row";
-      descriptionRow.style.display = isVisible ? "none" : "table-row";
+      const isVisible = row.style.display === "table-row";
+      row.style.display = isVisible ? "none" : "table-row";
       button.classList.toggle("open", !isVisible);
     });
   });
 
-  // --------------------------------------------------
-  // FAQ accordion
-  // --------------------------------------------------
-
+  // =====================================================
+  // === FAQ ACCORDION ===
+  // =====================================================
   document.querySelectorAll(".faq-question").forEach(question => {
     question.addEventListener("click", () => {
       const answer = question.nextElementSibling;
-      if (!answer) return;
-
       const isOpen = question.classList.contains("open");
+
       answer.style.maxHeight = isOpen ? null : answer.scrollHeight + "px";
       question.classList.toggle("open", !isOpen);
     });
   });
 
-  // ======================================================
-  // === BEATS : play / pause on image click ===
-  // ======================================================
-
+  // =====================================================
+  // === BEATS : PLAY / PAUSE ===
+  // =====================================================
   let currentlyPlayingAudio = null;
   let currentlyPlayingImage = null;
 
@@ -99,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Same beat → toggle
       if (audio === currentlyPlayingAudio) {
         if (audio.paused) {
-          audio.play().catch(() => {});
+          audio.play();
           image.classList.add("playing");
         } else {
           audio.pause();
@@ -118,15 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Play new beat
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
+      audio.play();
       image.classList.add("playing");
 
       currentlyPlayingAudio = audio;
       currentlyPlayingImage = image;
     });
 
-    // Cleanup when finished
     audio.addEventListener("ended", () => {
       image.classList.remove("playing");
       if (audio === currentlyPlayingAudio) {
@@ -134,6 +129,49 @@ document.addEventListener("DOMContentLoaded", () => {
         currentlyPlayingImage = null;
       }
     });
+  });
+
+  // =====================================================
+  // === BEATS : "M'INFORMER" MODAL ===
+  // =====================================================
+  const modal = document.getElementById("notify-modal");
+  const modalClose = modal?.querySelector(".modal-close");
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  // Open modal from beat buttons
+  document.querySelectorAll(".beat-card button").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  // Close button
+  modalClose?.addEventListener("click", closeModal);
+
+  // Click outside modal
+  modal?.addEventListener("click", e => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // ESC key
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+      closeModal();
+    }
   });
 
 });
