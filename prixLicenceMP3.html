@@ -143,26 +143,26 @@
       </div>
 
       <!-- TRANSFER BLOCK -->
-      <div id="transferBlock" class="form-group hidden">
-        <h3>Nouveau bénéficiaire</h3>
+      <div class="form-group">
+        <h3>Nouveau bénéficiaire (si transfert)</h3>
 
         <label>
           Prénom<br>
-          <input type="text" name="new_recipient_firstname">
+          <input type="text" name="beneficiaire_prenom">
         </label>
 
         <label>
           Nom<br>
-          <input type="text" name="new_recipient_lastname">
+          <input type="text" name="beneficiaire_nom">
         </label>
 
-        <label class="confirm-renunciation">
-          <input type="checkbox" name="final_renunciation" value="yes">
+        <label>
+          <input type="checkbox" name="confirmation_renonciation" />
           Je confirme renoncer définitivement au prix
         </label>
       </div>
 
-      <button type="submit" class="cta-button">
+      <button type="submit" class="btn-primary">
         Confirmer
       </button>
 
