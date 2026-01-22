@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prix 2 – T&C | Studio Nord</title>
+  <link rel="stylesheet" href="css/styleA.css" />
+</head>
+
+<body class="legal-page">
+
+  <main class="container legal-container">
+
+    <!-- HEADER -->
+    <header class="legal-header">
+      <h1>
+        Prix Décompte<br>
+        Hoodie Studio Nord
+      </h1>
+      <p class="subtitle">
+        Notice officielle – Termes et conditions
+      </p>
+    </header>
+
+    <!-- VERSION COURTE -->
+    <section class="legal-summary">
+      <h2>Résumé rapide</h2>
+      <ul>
+        <li>Hoodie officiel <strong>Studio Nord – Étoile Polaire #1</strong></li>
+        <li>Couleur au choix : <strong>blanc ou noir</strong></li>
+        <li>Prix <strong>non transférable</strong></li>
+        <li>Non échangeable contre argent ou crédit</li>
+        <li>Doit être réclamé dans les <strong>30 jours</strong></li>
+        <li>Acceptation officielle requise</li>
+      </ul>
+      <p class="note">
+        Veuillez lire la notice complète qui suit et confirmer pour accepter votre prix.
+      </p>
+    </section>
+
+    <!-- NOTICE COMPLETE -->
+    <section class="legal-content">
+
+      <h2>1. Description du prix</h2>
+      <p>
+        Le Prix 2 consiste en un hoodie officiel Studio Nord,
+        modèle <strong>Étoile Polaire #1</strong>, offert au choix
+        en couleur blanche ou noire.
+      </p>
+
+      <h2>2. Réclamation et acceptation</h2>
+      <ul>
+        <li>Le prix doit être réclamé dans un délai de <strong>30 jours</strong> suivant la réception de cette notice.</li>
+        <li>Le ou la gagnant.e est contacté.e par message privé avec un lien vers les présents termes.</li>
+        <li>Une confirmation explicite de la prise de connaissance et de l’acceptation des Termes est conditions est requise.</li>
+      </ul>
+
+      <h2>3. Non-transférabilité</h2>
+      <p>
+        Le Prix 2 est <strong>strictement non transférable</strong>.
+        Il est réservé exclusivement au compte gagnant identifié
+        lors de l’annonce officielle.
+      </p>
+
+      <h2>4. Conditions générales applicables</h2>
+      <ul>
+        <li>Le prix est non échangeable contre de l’argent, un crédit ou tout autre service.</li>
+        <li>Le ou la gagnant.e s’engage à adopter une attitude respectueuse envers Studio Nord, son équipe et ses partenaires.</li>
+        <li>Aucune divulgation d’informations confidentielles ou commerciales n’est autorisée.</li>
+        <li>Les présents termes et conditions sont régis par les lois du Québec.</li>
+      </ul>
+
+    </section>
+
+    <!-- FORMULAIRE D’ACCEPTATION -->
+    <section class="legal-form">
+      <h2>Confirmation et acceptation du prix</h2>
+
+      <form
+        class="prize-form"
+        action="https://formspree.io/f/mnjjkzzq"
+        method="POST"
+      >
+
+        <!-- META -->
+        <input type="hidden" name="form_type" value="acceptation_prix_hoodie" />
+        <input type="hidden" name="prix" value="Prix 2 – Hoodie Studio Nord" />
+
+        <!-- IDENTITÉ -->
+        <div class="form-group">
+          <label>
+            Compte Instagram (tel qu’identifié lors du tirage)<br />
+            <input
+              type="text"
+              name="instagram"
+              value="@jamesalynes"
+              readonly
+            />
+          </label>
+        </div>
+
+        <!-- CHECKBOX 1 -->
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="confirmation_identite" required />
+            Je confirme être le/la propriétaire de ce compte Instagram
+          </label>
+        </div>
+
+        <!-- CHECKBOX 2 -->
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="acceptation_termes" required />
+            J’ai pris connaissance et j’accepte les termes et conditions ci-dessus
+          </label>
+        </div>
+
+        <!-- ACCEPTATION -->
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="acceptation_prix" required />
+            J’accepte officiellement le Prix 2 – Hoodie Studio Nord
+          </label>
+        </div>
+
+        <!-- OPTIONS -->
+        <div class="form-group">
+          <label>
+            Choix de couleur<br />
+            <select name="couleur_hoodie" required>
+              <option value="">— Sélectionner —</option>
+              <option value="noir">Noir</option>
+              <option value="blanc">Blanc</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Confirmer
+        </button>
+
+      </form>
+    </section>
+
+  </main>
+
+</body>
+</html>

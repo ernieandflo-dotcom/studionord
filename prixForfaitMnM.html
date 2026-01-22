@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prix 3 – T&C | Studio Nord</title>
+  <link rel="stylesheet" href="css/styleA.css" />
+</head>
+
+<body class="legal-page">
+
+  <main class="container legal-container">
+
+    <!-- HEADER -->
+    <header class="legal-header">
+      <h1>
+        Prix Décompte<br>
+        Forfait M&M
+      </h1>
+      <p class="subtitle">
+        Notice officielle – Termes et conditions
+      </p>
+    </header>
+
+    <!-- VERSION COURTE -->
+    <section class="legal-summary">
+      <h2>Résumé rapide</h2>
+      <ul>
+        <li><strong>3 h d’enregistrement</strong> en studio</li>
+        <li><strong>Mix complet</strong> (voix et instruments)</li>
+        <li><strong>Master final</strong> de la bande maîtresse</li>
+        <li><strong>Vidéo de présentation d’artiste</strong> (Magic Box)</li>
+        <li>Prix <strong>transférable une seule fois</strong></li>
+        <li>À utiliser dans les <strong>12 mois</strong></li>
+        <li>À réclamer dans les <strong>30 jours</strong></li>
+      </ul>
+      <p class="note">
+        Veuillez lire la notice complète qui suit et confirmer votre décision.
+      </p>
+    </section>
+
+    <!-- NOTICE COMPLETE -->
+    <section class="legal-content">
+
+      <h2>1. Description du prix</h2>
+      <p>
+        Le Prix 3 consiste en un <strong>Forfait M&M</strong> comprenant :
+      </p>
+      <ul>
+        <li>3 heures d’enregistrement en studio</li>
+        <li>Le service de mix pour l’ensemble des stems (voix et instruments)</li>
+        <li>Le service de mastering de la bande maîtresse finale</li>
+        <li>Une vidéo de présentation d’artiste réalisée dans la <strong>Magic Box</strong></li>
+      </ul>
+
+      <h2>2. Réclamation et acceptation</h2>
+      <ul>
+        <li>Le prix doit être réclamé dans un délai de <strong>30 jours</strong>.</li>
+        <li>Le ou la gagnant.e est contacté.e par message privé avec un lien vers les présents termes.</li>
+        <li>Une confirmation explicite de la prise de connaissance et de l’acceptation des Termes est conditions est requise.</li>
+      </ul>
+
+      <h2>3. Validité et réservation</h2>
+      <ul>
+        <li>Le forfait doit être utilisé dans un délai maximal de <strong>12 mois</strong>.</li>
+        <li>Les séances sont planifiées selon les <strong>disponibilités de Studio Nord</strong>.</li>
+        <li>Tout dépassement du délai entraîne l’expiration du prix.</li>
+      </ul>
+
+      <h2>4. Transférabilité</h2>
+      <p>
+        Le Prix 3 est <strong>transférable une seule fois</strong>, sous réserve :
+      </p>
+      <ul>
+        <li>d’un avis explicite à Studio Nord ;</li>
+        <li>de l’identification claire du nouveau bénéficiaire.</li>
+      </ul>
+      <p>
+        Une fois le transfert confirmé, le ou la gagnant.e original.e renonce définitivement au prix.
+      </p>
+
+      <h2>5. Conditions générales applicables</h2>
+      <ul>
+        <li>Le prix est non échangeable contre argent, crédit ou autre service.</li>
+        <li>Une attitude respectueuse envers Studio Nord est exigée.</li>
+        <li>Aucune information confidentielle ou commerciale ne peut être divulguée.</li>
+        <li>Les présents termes sont régis par les lois du Québec.</li>
+      </ul>
+
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section class="legal-form">
+      <h2>Confirmation et décision</h2>
+
+      <form
+        class="prize-form"
+        action="https://formspree.io/f/xjggqook"
+        method="POST"
+      >
+
+        <!-- META -->
+        <input type="hidden" name="form_type" value="acceptation_prix_forfait_mm" />
+        <input type="hidden" name="prix" value="Prix 3 – Forfait M&M" />
+
+        <!-- IDENTITÉ -->
+        <div class="form-group">
+          <label>
+            Compte Instagram (tel qu’identifié lors du tirage)<br />
+            <input
+              type="text"
+              name="instagram"
+              value="@purpbeatzz"
+              readonly
+            />
+          </label>
+        </div>
+
+        <!-- CHECKBOX IDENTITÉ -->
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="confirmation_identite" required />
+            Je confirme être le/la propriétaire de ce compte Instagram
+          </label>
+        </div>
+
+        <!-- CHECKBOX T&C -->
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="acceptation_termes" required />
+            J’ai pris connaissance et j’accepte les termes et conditions ci-dessus
+          </label>
+        </div>
+
+        <!-- DECISION -->
+        <div class="form-group">
+          <label>
+            <input type="radio" name="decision" value="accepte" required />
+            J’accepte le Forfait M&M
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="decision" value="transfert" required />
+            Je renonce au prix et souhaite le transférer
+          </label>
+        </div>
+
+        <!-- TRANSFERT -->
+        <div class="form-group">
+          <h3>Nouveau bénéficiaire (si transfert)</h3>
+
+          <label>
+            Prénom<br />
+            <input type="text" name="beneficiaire_prenom" />
+          </label>
+
+          <label>
+            Nom<br />
+            <input type="text" name="beneficiaire_nom" />
+          </label>
+
+          <label>
+            <input type="checkbox" name="confirmation_renonciation" />
+            Je confirme renoncer définitivement au prix
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Confirmer
+        </button>
+
+      </form>
+    </section>
+
+  </main>
+
+</body>
+</html>
