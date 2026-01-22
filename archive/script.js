@@ -174,8 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
- // =====================================================
-  // === PRIZE PAGES : T&C LOGIC (FORMSPREE SAFE) ===
+  // =====================================================
+  // === PRIZE PAGES : T&C + FORMSPREE (AJAX + REDIRECT) ===
   // =====================================================
   document.querySelectorAll(".prize-form").forEach(form => {
 
@@ -197,28 +197,47 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Validation avant envoi
-    form.addEventListener("submit", e => {
+    // Submit (AJAX – Formspree Free compatible)
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+
       const decision = form.querySelector('input[name="decision"]:checked')?.value;
 
       if (!decision) {
-        e.preventDefault();
         alert("Veuillez accepter le prix ou indiquer un transfert.");
         return;
       }
 
       if (decision === "RENONCE_ET_TRANSFERE") {
         if (!firstName?.value.trim() || !lastName?.value.trim()) {
-          e.preventDefault();
           alert("Veuillez indiquer le prénom et le nom du nouveau bénéficiaire.");
           return;
         }
 
         if (!renounceCheckbox?.checked) {
-          e.preventDefault();
           alert("Vous devez confirmer la renonciation définitive au prix.");
           return;
         }
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (response.ok) {
+          window.location.href = "https://ostudionord.ca/merci";
+        } else {
+          alert("Une erreur est survenue lors de l’envoi. Veuillez réessayer.");
+        }
+      } catch (error) {
+        alert("Impossible d’envoyer le formulaire. Vérifiez votre connexion.");
       }
     });
   });
