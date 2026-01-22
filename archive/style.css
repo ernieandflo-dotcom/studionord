@@ -789,3 +789,186 @@ footer {
 .business-phone {
   margin-top: 0.8rem;
 }
+
+ /* =====================================================
+   === LEGAL / PRIX – PAGES D’ACCEPTATION (AJOUT) ===
+   ===================================================== */
+
+.legal-page {
+  background: var(--accent);
+}
+
+.legal-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.legal-header {
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.legal-header h1 {
+  font-size: 2.2rem;
+  color: var(--light);
+  margin-bottom: 0.5rem;
+}
+
+.legal-header .subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* --- Résumé court --- */
+.legal-summary {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.legal-summary h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.legal-summary ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.legal-summary li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.legal-summary .note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* --- Contenu légal --- */
+.legal-content {
+  text-align: left;
+}
+
+.legal-content h2 {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1rem;
+  color: var(--primary);
+}
+
+.legal-content p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #e6f6ff;
+}
+
+.legal-content ul {
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-content li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.legal-content blockquote {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+  font-style: italic;
+}
+
+/* --- Formulaire --- */
+.legal-form {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.legal-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--light);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.form-group input[type="checkbox"],
+.form-group input[type="radio"] {
+  margin-right: 0.6rem;
+  transform: scale(1.1);
+}
+
+.form-group input[type="text"],
+.form-group select {
+  margin-top: 0.4rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: none;
+  background: #1c1c1c;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.confirm-renunciation {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #ffb3b3;
+}
+
+/* --- Bouton --- */
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+  .legal-container {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .legal-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .legal-summary h2,
+  .legal-content h2 {
+    font-size: 1.25rem;
+  }
+}
