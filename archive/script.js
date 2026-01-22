@@ -173,7 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
-});
 
  // =====================================================
   // === PRIZE PAGES : T&C LOGIC (FORMSPREE SAFE) ===
@@ -187,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstName = form.querySelector('input[name="beneficiaire_prenom"]');
     const lastName = form.querySelector('input[name="beneficiaire_nom"]');
 
-    // --- Toggle transfert block ---
+    // Toggle accept / transfer
     decisionInputs.forEach(input => {
       input.addEventListener("change", () => {
         if (input.value === "transfert" && input.checked) {
@@ -198,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // --- Validation avant envoi ---
+    // Validation avant envoi
     form.addEventListener("submit", e => {
       const decision = form.querySelector('input[name="decision"]:checked')?.value;
 
@@ -209,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (decision === "transfert") {
-        if (!firstName?.value || !lastName?.value) {
+        if (!firstName?.value.trim() || !lastName?.value.trim()) {
           e.preventDefault();
           alert("Veuillez indiquer le prénom et le nom du nouveau bénéficiaire.");
           return;
@@ -224,4 +223,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
