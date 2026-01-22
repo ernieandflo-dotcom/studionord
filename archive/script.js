@@ -173,5 +173,55 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
-
 });
+
+ // =====================================================
+  // === PRIZE PAGES : T&C LOGIC (FORMSPREE SAFE) ===
+  // =====================================================
+  document.querySelectorAll(".prize-form").forEach(form => {
+
+    const decisionInputs = form.querySelectorAll('input[name="decision"]');
+    const transferBlock = form.querySelector('[data-transfer-block]');
+    const renounceCheckbox = form.querySelector('input[name="confirmation_renonciation"]');
+
+    const firstName = form.querySelector('input[name="beneficiaire_prenom"]');
+    const lastName = form.querySelector('input[name="beneficiaire_nom"]');
+
+    // --- Toggle transfert block ---
+    decisionInputs.forEach(input => {
+      input.addEventListener("change", () => {
+        if (input.value === "transfert" && input.checked) {
+          transferBlock?.classList.remove("hidden");
+        } else {
+          transferBlock?.classList.add("hidden");
+        }
+      });
+    });
+
+    // --- Validation avant envoi ---
+    form.addEventListener("submit", e => {
+      const decision = form.querySelector('input[name="decision"]:checked')?.value;
+
+      if (!decision) {
+        e.preventDefault();
+        alert("Veuillez accepter le prix ou indiquer un transfert.");
+        return;
+      }
+
+      if (decision === "transfert") {
+        if (!firstName?.value || !lastName?.value) {
+          e.preventDefault();
+          alert("Veuillez indiquer le prénom et le nom du nouveau bénéficiaire.");
+          return;
+        }
+
+        if (!renounceCheckbox?.checked) {
+          e.preventDefault();
+          alert("Vous devez confirmer la renonciation définitive au prix.");
+          return;
+        }
+      }
+    });
+  });
+});
+
