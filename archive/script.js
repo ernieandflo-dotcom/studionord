@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Toggle accept / transfer
     decisionInputs.forEach(input => {
       input.addEventListener("change", () => {
-        if (input.value === "transfert" && input.checked) {
+        if (input.value === "RENONCE_ET_TRANSFERE" && input.checked) {
           transferBlock?.classList.remove("hidden");
         } else {
           transferBlock?.classList.add("hidden");
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (decision === "transfert") {
+      if (decision === "RENONCE_ET_TRANSFERE") {
         if (!firstName?.value.trim() || !lastName?.value.trim()) {
           e.preventDefault();
           alert("Veuillez indiquer le prénom et le nom du nouveau bénéficiaire.");
