@@ -197,6 +197,15 @@ main {
   background-color: var(--primary);
 }
 
+.pricing-table a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.pricing-table a:hover {
+  color: #aaa;
+}
+
 .media-grid {
   display: grid;
   gap: 1rem;
